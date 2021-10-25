@@ -43,6 +43,11 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <?php if ($authUser) { ?>
+ <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?>
+<?php } else { ?>
+ <?= $this->Html->link('Register', ['controller' => 'users', 'action' => 'register']); ?>
+<?php } ?>
         </div>
     </nav>
     <main class="main">

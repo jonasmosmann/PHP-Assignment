@@ -102,4 +102,39 @@ class UsersController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
+    public function login() {
+        if ($this->request->is('post')) {
+        $user = $this->Auth->identify();
+        if ($user) {
+        $this->Auth->setUser($user);
+       
+        return $this->redirect(['controller' => 'users']);
+        }
+        //Bad login
+        $this->Flash->error('Incorrect login');
+        }
+       }
+       public function logout() {
+        $this->Flash->success('You are loggoed out');
+        return $this->redirect($this->Auth->logout());
+       }
+       public function beforeFilter(\Cake\Event\EventInterface $event) {
+        $this->Auth->allow('register');
+       }
+       public function register() {
+        if ($this->request->getData()) {
+        $user = $this->Users->newEntity($this->request->getData());
+        if ($this->Users->save($user)) {
+        //$this->Auth->setUser($user->toArray());
+        $this->Flash->success(__('You are registered. You can login now.'));
+        return $this->redirect([
+        //'controller' => 'Users',
+        'action' => 'login'
+        ]);
+        }
+        else {
+        $this->Flash->error(__('You are not registered.'));
+        }
+        }
+       }
 }
