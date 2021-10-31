@@ -12,9 +12,9 @@ class TasksTable extends Table
 {
     public function initialize(array $config): void
     {
-        $this->setTable('users');
+        $this->setTable('tasks');
         $this->setDisplayField('name');
-        $this->setForeignKey('id');
+
 
         $this->addBehavior('Timestamp');
     }

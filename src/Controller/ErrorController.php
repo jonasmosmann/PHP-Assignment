@@ -51,12 +51,12 @@ class ErrorController extends AppController
      * @param \Cake\Event\EventInterface $event Event.
      * @return \Cake\Http\Response|null|void
      */
-    public function beforeRender(EventInterface $event)
+    /*public function beforeRender(EventInterface $event)
     {
         parent::beforeRender($event);
 
         $this->viewBuilder()->setTemplatePath('Error');
-    }
+    }*/
 
     /**
      * afterFilter callback.
