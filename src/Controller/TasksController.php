@@ -34,5 +34,13 @@ class TasksController extends AppController
         $this->set('task', $task);
     }
 
+    public function view ($TaskId=null){
+        $task=$this->Tasks->get($TaskId, [
+            'contain' => []
+        ]);
+        $this->set('task', $task);
+    }
+
+
 
 }

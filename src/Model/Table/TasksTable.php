@@ -13,7 +13,7 @@ class TasksTable extends Table
     public function initialize(array $config): void
     {
         $this->setTable('tasks');
-        $this->setDisplayField('name');
+        $this->setDisplayField('TaskId');
        
 
         $this->addBehavior('Timestamp');
