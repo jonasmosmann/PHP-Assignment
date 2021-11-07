@@ -41,6 +41,23 @@ class TasksController extends AppController
         $this->set('task', $task);
     }
 
+    public function edit($TaskId = null)
+    {
+        $task = $this->Tasks->get($TaskId, [
+            'contain' => []
+        ]);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $task = $this->Tasks->patchEntity($task, $this->request->getData());
+            if ($this->Tasks->save($task)) {
+                $this->Flash->success('Deine Aufgabe wurde gespeichert.');
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error('Deine Aufgabe konnte nicht gespeichert werden.');
+        }
+        $this->set(compact('task'));
+    }
+
 
 
 }
