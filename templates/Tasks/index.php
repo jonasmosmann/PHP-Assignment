@@ -13,6 +13,9 @@
                 <td><?= $task->EntryTime->format(DATE_RFC850) ?></td>
                 <td><?=  $task->Owner ?></td>
                 <td><?= $this->Html->link('Bearbeiten', ['action' => 'edit', $task->TaskId]) ?></td>
+                <td><?= $this->Form->postLink('Löschen', ['action' => 'delete', $task->TaskId], 
+                ['confirm' => 'Willst du diese Aufgabe wirklich löschen?', $task->TaskId]) ?>
+                </td>
                 
             </tr>
 <?php } ?>

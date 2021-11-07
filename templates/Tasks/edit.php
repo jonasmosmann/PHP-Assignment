@@ -9,7 +9,7 @@
             echo $this->Form->control('Description');
             echo $this->Form->button('Änderungen speichern'); 
 
-            echo $this->Form->end() 
+            echo $this->Form->end(); 
             
             
             

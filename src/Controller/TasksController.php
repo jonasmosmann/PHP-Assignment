@@ -57,7 +57,19 @@ class TasksController extends AppController
         }
         $this->set(compact('task'));
     }
+       
+    public function delete($TaskId = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $task = $this->Tasks->get($TaskId);
+        if ($this->Tasks->delete($task)) {
+            $this->Flash->success(__('Die Aufgabe wurde gelöscht.'));
+        } else {
+            $this->Flash->error(__('Die AUfgabe konnte nicht gelöscht werden.'));
+        }
 
+        return $this->redirect(['action' => 'index']);
+    }
 
 
 }

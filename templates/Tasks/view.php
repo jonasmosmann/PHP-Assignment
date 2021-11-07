@@ -12,3 +12,6 @@
             </tr>
 
 </table>
+
+<?= $this->Form->postLink('Löschen', ['action' => 'delete', $task->TaskId], 
+                ['confirm' => 'Willst du diese Aufgabe wirklich löschen?', $task->TaskId]); ?>
