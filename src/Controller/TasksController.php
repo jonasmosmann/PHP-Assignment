@@ -23,7 +23,7 @@ class TasksController extends AppController
 
         if ($this->request->is('post')){
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
-        
+            $task->Owner=$this->Auth->user('name');
             if($this->Tasks->save($task)){
                 $this->Flash->success("Deine Aufgabe wurde notiert!");
                 return $this->redirect(['action'=>'index']);

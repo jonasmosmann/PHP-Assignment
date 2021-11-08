@@ -41,9 +41,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
         <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/4/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
             <?php if ($authUser) { ?>
+                <?= $this->Html->link('Meine Aufgaben', ['controller' => 'tasks', 'action' => 'index']); ?>
  <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?>
 <?php } else { ?>
  <?= $this->Html->link('Register', ['controller' => 'users', 'action' => 'register']); ?>
