@@ -43,7 +43,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <?php if ($authUser) { ?>
                 <?= $this->Html->link('Meine Aufgaben', ['controller' => 'tasks', 'action' => 'index']); ?>
- <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?>
+                <?= $this->Html->link('Benutzer', ['controller' => 'users', 'action' => 'index']); ?>
+                <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?>
 <?php } else { ?>
  <?= $this->Html->link('Register', ['controller' => 'users', 'action' => 'register']); ?>
 <?php } ?>

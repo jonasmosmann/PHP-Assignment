@@ -1,5 +1,5 @@
 
-<h2><?= $task->TaskId?> </h2>
+<h2><?= $task->Title?> </h2>
 <table>
 
             <tr>

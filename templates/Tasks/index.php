@@ -21,3 +21,6 @@
 <?php } ?>
 
 </table>
+
+<p> Du hast noch  <?= $number ?> Aufgaben übrig!</p>
+

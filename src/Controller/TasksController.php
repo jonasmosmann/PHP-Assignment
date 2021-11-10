@@ -17,6 +17,12 @@ class TasksController extends AppController
         $tasks = $this->Paginator->paginate($this->Tasks->find());
 
         $this->set('tasks', $tasks);
+        
+        $query = $this->Tasks->find('all', [
+            'conditions' => ['Tasks.Completed' => '0']
+        ]);
+        $number = $query->count();
+        $this->set('number', $number);
     }
     public function add(){
         $task = $this->Tasks->newEmptyEntity();
