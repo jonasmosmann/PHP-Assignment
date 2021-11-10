@@ -18,4 +18,14 @@ class TasksTable extends Table
 
         $this->addBehavior('Timestamp');
     }
+    public function validationDefault(Validator $validator):Validator
+{
+    $validator
+        ->allowEmptyString('Title', 'Du musst der Aufgabe einen Name geben!', false);
+
+    $validator
+        ->allowEmptyString('Description', 'Füge eine Beschreibung hinzu!', false);
+
+    return $validator;
+}
 }
