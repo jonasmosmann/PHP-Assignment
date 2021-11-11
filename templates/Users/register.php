@@ -1,15 +1,26 @@
-<div class="row">
- <div class="column-responsive">
- <div class="users form content">
- <h2 class="text-center">Register</h2>
- <?= $this->Form->create() ?>
- <fieldset>
- <?= $this->Form->control('name') ?>
- <?= $this->Form->control('email') ?>
- <?= $this->Form->control('password') ?>
- <?= $this->Form->submit('Register',array('class' => 'button')); ?>
- </fieldset>
- <?= $this->Form->end(); ?>
- </div>
- </div>
-</div>
+
+
+
+<?= $this->Form->create()?>
+  <fieldset>
+    <legend>Registrieren</legend>
+
+    <div class="form-group">
+      <label for="userName" class="form-label mt-4">Benutzername</label>
+      <?= $this->Form->control('name', ['class'=> 'form-control', 'id'=> 'userName'])?>
+    </div>
+
+    <div class="form-group">
+      <label for="userEmail" class="form-label mt-4">Email</label>
+      <?= $this->Form->control('email', ['class'=> 'form-control', 'id'=> 'userEmail'])?>
+    </div>
+
+    <div class="form-group">
+      <label for="userPassword" class="form-label mt-4">Passwort</label>
+      <?= $this->Form->control('password', ['class'=> 'form-control', 'id'=> 'userPassword'])?>
+    </div>
+  </fieldset>
+
+  <?=$this->Form->button('Benutzer erstellen', ['class'=> 'btn btn-primary'])?>
+
+  <?= $this->Form->end()?>

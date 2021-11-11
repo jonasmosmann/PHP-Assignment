@@ -28,28 +28,49 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <?= $this->Html->meta('icon') ?>
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'cake']) ?>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <?php $this->Html->css('bootstrap'); ?>
+    
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
 </head>
 <body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
-        </div>
-        <div class="top-nav-links">
-            <?php if ($authUser) { ?>
-                <?= $this->Html->link('Meine Aufgaben', ['controller' => 'tasks', 'action' => 'index']); ?>
-                <?= $this->Html->link('Benutzer', ['controller' => 'users', 'action' => 'index']); ?>
-                <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout']); ?>
+    
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">WG - Tasklist</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto">
+      <?php if ($authUser) { ?>
+               <li class="nav-item"> <?= $this->Html->link('Meine Aufgaben', ['controller' => 'tasks', 'action' => 'index'],['class'=> 'nav-link']); ?></li>
+               <li class="nav-item"> <?= $this->Html->link('Benutzer', ['controller' => 'users', 'action' => 'index'],['class'=> 'nav-link']); ?></li>
+               <li class="nav-item"> <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout'],['class'=> 'nav-link']); ?></li>
 <?php } else { ?>
- <?= $this->Html->link('Register', ['controller' => 'users', 'action' => 'register']); ?>
+    <li class="nav-item"> <?= $this->Html->link('Registrieren', ['controller' => 'users', 'action' => 'register'],['class'=> 'nav-link']); ?></li>
+    <li class="nav-item"> <?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login'],['class'=> 'nav-link']); ?></li>
+
 <?php } ?>
-        </div>
-    </nav>
+        
+      </ul>
+
+      
+     
+    </div>
+  </div>
+</nav>
+
+
+
+
+
+
     <main class="main">
         <div class="container">
             <?= $this->Flash->render() ?>

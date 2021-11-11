@@ -4,47 +4,54 @@
  * @var \App\Model\Entity\User[]|\Cake\Collection\CollectionInterface $users
  */
 ?>
-<div class="users index content">
-    <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Users') ?></h3>
-    <div class="table-responsive">
-        <table>
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('name') ?></th>
-                    <th><?= $this->Paginator->sort('email') ?></th>
-                    <th><?= $this->Paginator->sort('created') ?></th>
-                    <th><?= $this->Paginator->sort('modified') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?= $this->Number->format($user->id) ?></td>
-                    <td><?= h($user->name) ?></td>
-                    <td><?= h($user->email) ?></td>
-                    <td><?= h($user->created) ?></td>
-                    <td><?= h($user->modified) ?></td>
+
+
+
+
+
+
+<h3>Benutzer</h3>
+  
+
+
+<?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?>
+
+<table class="table table-hover">
+  <thead>
+    <tr>
+    <th scope="col">Id</th>
+    <th scope="col">Name</th>
+    <th scope="col">Email</th>
+    <th scope="col">Erstelldatum</th>
+    <th scope="col">Zuletzt geändert</th> 
+    </tr>
+  </thead>
+  <tbody>
+    
+      <?php foreach ($users as $user){ ?>
+            <tr>
+
+
+            <td><?= $this->Number->format($user->id) ?></td>
+                    <td><?= ($user->name) ?></td>
+                    <td><?= ($user->email) ?></td>
+                    <td><?= ($user->created) ?></td>
+                    <td><?= ($user->modified) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        <?= $this->Html->link('Details', ['action' => 'view', $user->id]) ?>
+                        <?= $this->Html->link('Edit', ['action' => 'edit', $user->id]) ?>
+                        <?= $this->Form->postLink('Delete', ['action' => 'delete', $user->id], ['confirm' => __('Willst du den Benutzer "{0}" wirklich löschen?', $user->name)]) ?>
                     </td>
-                </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
-</div>
+
+
+
+             
+            </tr>
+            <?php } ?>
+
+  </tbody>
+</table>
+
+
+
+
