@@ -1,5 +1,5 @@
 
-<h3><?= $task->Title?></h3>
+<h3 style="margin: 50px 0;"><?= $task->Title?></h3>
   
 
 
@@ -17,10 +17,13 @@
         <td width="50%"><?= $task->Description ?></td>
         <td width="36%"><?=  $task->Owner ?></td>
         <td >
-                <?= $this->Html->link('Bearbeiten', ['action' => 'edit', $task->TaskId]) ?>
-                <?= $this->Form->postLink('Löschen', ['action' => 'delete', $task->TaskId], 
-                ['confirm' => 'Willst du diese Aufgabe wirklich löschen?', $task->TaskId]) ?>  
-                </td>   
+        <td width="10%">
+                <?=$this->Html->image("edit.png", ["alt" => "edit",'url' => ['action' => 'edit', $task->TaskId],'style' =>'width:30%; height:auto;'])?>
+              
+                
+<?= $this->Form->postLink($this->Html->image("trash.png", ["alt" => 'Mülleimer','style' =>'width:25%; height:auto;']), 
+					    ['action' => 'delete', $task->TaskId],
+					    ['escape' => false, 'confirm' => 'Willst du diese Aufgabe wirklich löschen?', $task->TaskId] )?> 
     </tr>
 
   </tbody>

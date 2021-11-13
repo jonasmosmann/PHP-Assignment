@@ -7,14 +7,14 @@
 
 
 
+<div class="container" style="margin: 50px 0;">
+  <div class="row">
+    <div class="col-md-6"><h3 >Benutzer</h3></div>
+    <div class="col-md-6"><?= $this->Html->link("Neuer Benutzer ", ['action' => 'add'], ['class'=> 'btn btn-warning', 'style'=>"float:right;" ])?> </div>
+    </div>
+</div>
 
 
-
-<h3>Benutzer</h3>
-  
-
-
-<?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'btn btn-warning']) ?>
 
 <table class="table table-hover">
   <thead>
@@ -37,10 +37,19 @@
                     <td><?= ($user->email) ?></td>
                     <td><?= ($user->created) ?></td>
                     <td><?= ($user->modified) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link('Details', ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link('Edit', ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink('Delete', ['action' => 'delete', $user->id], ['confirm' => __('Willst du den Benutzer "{0}" wirklich löschen?', $user->name)]) ?>
+                   
+                        <td width="10%">
+                        <?=$this->Html->image("user.png", ["alt" => "user",'url' => ['action' => 'view', $user->id],'style' =>'width:30%; height:auto;'])?>
+                <?=$this->Html->image("edit.png", ["alt" => "edit",'url' => ['action' => 'edit', $user->id],'style' =>'width:30%; height:auto;'])?>
+                
+<?= $this->Form->postLink($this->Html->image("trash.png", ["alt" => 'trash','style' =>'width:25%; height:auto;']), 
+					    ['action' => 'delete', $user->id],
+					    ['escape' => false, 'confirm' => __('Willst du den Benutzer {0} wirklich löschen?', $user->name)])?>
+
+
+
+
+
                     </td>
 
 

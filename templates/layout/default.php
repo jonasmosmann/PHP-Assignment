@@ -29,7 +29,7 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <link href="https://fonts.googleapis.com/css?family=Raleway:400,700" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <?php $this->Html->css('bootstrap'); ?>
+    <?php $this->Html->css('bootstrap') ?>
     
 
     <?= $this->fetch('meta') ?>
@@ -41,24 +41,28 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">WG - Tasklist</a>
+    <a class="navbar-brand" href="#" style="margin-right: 50px;">WG - Tasklist</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <div class="collapse navbar-collapse" id="navbarColor01">
-      <ul class="navbar-nav me-auto">
+      
       <?php if ($authUser) { ?>
+        <ul class="navbar-nav me-auto">
                <li class="nav-item"> <?= $this->Html->link('Meine Aufgaben', ['controller' => 'tasks', 'action' => 'index'],['class'=> 'nav-link']); ?></li>
                <li class="nav-item"> <?= $this->Html->link('Benutzer', ['controller' => 'users', 'action' => 'index'],['class'=> 'nav-link']); ?></li>
-               <li class="nav-item"> <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout'],['class'=> 'nav-link']); ?></li>
+      </ul>
+        <ul class="navbar-nav ms-auto"> <li class="nav-item ms-auto"> <?= $this->Html->link('Logout', ['controller' => 'users', 'action' => 'logout'],['class'=> 'nav-link','confirm' =>'Willst du dich wirklich abmelden?', 'style' => 'margin-right: 50px;']); ?></li></ul>
 <?php } else { ?>
-    <li class="nav-item"> <?= $this->Html->link('Registrieren', ['controller' => 'users', 'action' => 'register'],['class'=> 'nav-link']); ?></li>
-    <li class="nav-item"> <?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login'],['class'=> 'nav-link']); ?></li>
 
+  <ul class="navbar-nav ms-auto">
+    <li class="nav-item"> <?= $this->Html->link('Registrieren', ['controller' => 'users', 'action' => 'register'],['class'=> 'nav-link']); ?></li>
+    <li class="nav-item"> <?= $this->Html->link('Login', ['controller' => 'users', 'action' => 'login'],['class'=> 'nav-link','style' => 'margin-right: 50px;']); ?></li>
+</ul>
 <?php } ?>
         
-      </ul>
+      
 
       
      
