@@ -1,4 +1,4 @@
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
 <?php
 $this->Html->css('cake',['block'=>true]); 
 /**
@@ -10,4 +10,10 @@ if (!isset($params['escape']) || $params['escape'] !== false) {
     $message = h($message);
 }
 ?>
-<div class="message-success" onclick="this.classList.add('hidden')"><?= $message ?></div>
+
+
+<div class="alert alert-success text-center" role="alert" onclick="this.classList.add('hidden');">
+<?= $message ?>
+</div>
+
+
