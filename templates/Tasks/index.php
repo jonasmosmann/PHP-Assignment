@@ -1,3 +1,6 @@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+  
+  
   <div class="container" style="margin: 50px 0;">
   <div class="row">
     <div class="col-sm-6"><h3 >Deine Aufgaben</h3></div>
@@ -19,10 +22,7 @@
     
       <?php foreach ($tasks as $task){ ?>
             <tr>
-
-            <td><input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> </td>
-
-
+            <td><button type="button" class="btn btn-warning"> hallo</button></td>
 
 
                 <th scope="row"><?= $this->Html->link($task->Title, ['action' => 'view', $task->TaskId], ['style' => 'text-decoration:none;']) ?></th>
@@ -46,9 +46,21 @@
 
 <div class="container" style="margin: 50px 0;">
   <div class="row">
-    <div class="col-md-4"></div>
-    <div class="col-md-4" style="border: 2px solid #3459e6;"><p style="text-align: center; margin: 10px 0;"> Es gibt noch <?= $number ?> Aufgaben zu erledigen!</p></div>
-    <div class="col-md-4"></div>
+  <?php if($number==0){ ?>
+    <div class="col-md-4 offset-md-4" style="background-color:  #3459e6;"><p style="text-align: center; margin: 10px 0;"> Füge eine Aufgabe hinzu!</p></div>
+    <?php }else {?>
+      <div class="col-md-4 offset-md-4" style="background-color:  #3459e6;"><p style="text-align: center; margin: 10px 0;"> Es gibt noch <?= $number ?> Aufgaben zu erledigen!</p></div>
+      <?php } ?>
     </div>
 </div>
+<script>
 
+$(document).ready(function(){
+  $('.btn btn-warning').click(function(){
+
+    alert($(this).text());
+  });
+
+});
+
+</script>

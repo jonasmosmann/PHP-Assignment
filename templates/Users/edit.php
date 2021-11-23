@@ -4,8 +4,11 @@
  * @var \App\Model\Entity\User $user
  */
 ?>
-<h3 style="margin: 50px 0;">Benutzer bearbeiten</h3>
 
+
+<div class="row">
+<div class="col-sm-4 offset-sm-4">
+<h3 style="margin: 50px 0;">Benutzer bearbeiten</h3>
 <?= $this->Form->create($user)?>
   <fieldset>
 
@@ -28,4 +31,6 @@
   <?=$this->Form->button('Änderungen speichern', ['class'=> 'btn btn-primary','style'=>"margin: 30px 0;"])?>
 
   <?= $this->Form->end()?>
+  </div>
+  </div>
 

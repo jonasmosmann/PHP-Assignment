@@ -1,6 +1,8 @@
 
-<h3 style="margin: 50px 0;">Registrieren</h3>
 
+<div class="row">
+<div class="col-sm-4 offset-sm-4">
+<h3 style="margin: 50px 0;">Registrieren</h3>
 <?= $this->Form->create()?>
   <fieldset>
 
@@ -23,3 +25,5 @@
   <?=$this->Form->button('Benutzer erstellen', ['class'=> 'btn btn-primary', 'style'=>"margin: 30px 0;"])?>
 
   <?= $this->Form->end()?>
+  </div>
+  </div>

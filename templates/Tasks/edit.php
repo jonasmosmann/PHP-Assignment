@@ -1,7 +1,10 @@
-<?php $this->Html->css('bootstrap',['block'=>true]); ?>
 
+
+
+
+<div class="row">
+<div class="col-sm-6 offset-sm-3">
 <h3 style="margin: 50px 0;">Aufgabe bearbeiten</h3>
-
 <?= $this->Form->create($task)?>
   <fieldset>
     
@@ -19,3 +22,5 @@
   <?=$this->Form->button('Aufgabe speichern', ['class'=> 'btn btn-primary', 'style'=>"margin: 30px 0;"])?>
 
   <?= $this->Form->end()?>
+  </div>
+  </div>

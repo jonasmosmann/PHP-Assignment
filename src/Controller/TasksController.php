@@ -86,11 +86,18 @@ class TasksController extends AppController
         if ($this->Tasks->delete($task)) {
             $this->Flash->success(__('Die Aufgabe wurde gelöscht.'));
         } else {
-            $this->Flash->error(__('Die AUfgabe konnte nicht gelöscht werden.'));
+            $this->Flash->error(__('Die Aufgabe konnte nicht gelöscht werden.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
 
+    public function receive($TaskId = null){
+        $Completed=$this->request->getData('Completed');
+        $task = $this->Tasks->get($TaskId);
+        $task->Completed=$Completed;
+        $this->Flash->success(__('Die Aufgabe wurde gelöscht.'));
+        
+    }
 
 }
