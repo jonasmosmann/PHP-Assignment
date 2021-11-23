@@ -100,4 +100,10 @@ class TasksController extends AppController
         
     }
 
+    public function receive1(){
+        $Completed=$this->request->getData('Completed');
+        exit($Completed);
+        
+    }
+
 }
