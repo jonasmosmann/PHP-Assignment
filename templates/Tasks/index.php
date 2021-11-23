@@ -47,9 +47,9 @@
 <div class="container" style="margin: 50px 0;">
   <div class="row">
   <?php if($number==0){ ?>
-    <div class="col-md-4 offset-md-4" style="background-color:  #3459e6;"><p style="text-align: center; margin: 10px 0;"> Füge eine Aufgabe hinzu!</p></div>
+    <div class="col-md-4 offset-md-4" style="background-color:  #f4bd61;"><p style="text-align: center; margin: 10px 0;"> Du hast keine Aufgaben, gönn dir eine Pause!</p></div>
     <?php }else {?>
-      <div class="col-md-4 offset-md-4" style="background-color:  #3459e6;"><p style="text-align: center; margin: 10px 0;"> Es gibt noch <?= $number ?> Aufgaben zu erledigen!</p></div>
+      <div class="col-md-4 offset-md-4" style="border-top: 2px solid black;"><p style="text-align: center; margin: 10px 0;"> Es gibt noch <?= $number ?> Aufgaben zu erledigen!</p></div>
       <?php } ?>
     </div>
 </div>
