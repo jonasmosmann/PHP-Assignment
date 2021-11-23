@@ -22,7 +22,7 @@
     
       <?php foreach ($tasks as $task){ ?>
             <tr>
-            <td><button type="button" class="btn btn-warning"> hallo</button></td>
+            <td><button type="button" class="btn btn-warning" id="<?php $task->TaskId ?>"> hallo</button></td>
 
 
                 <th scope="row"><?= $this->Html->link($task->Title, ['action' => 'view', $task->TaskId], ['style' => 'text-decoration:none;']) ?></th>
@@ -39,6 +39,25 @@
 
         </td>
             </tr>
+            <script>
+  $(function (){
+    $('#<?php $task->TaskId ?>').click(function(){
+        $.ajax({
+          method:"POST",
+          url:"<?= $this->Url->build(['controller'=>'Tasks', 'action'=>'receive1'])?>",
+          data:{
+            Completed:1
+          }
+        })
+
+
+    });
+
+
+  })
+
+
+</script>
             <?php } ?>
 
   </tbody>
@@ -53,14 +72,4 @@
       <?php } ?>
     </div>
 </div>
-<script>
 
-$(document).ready(function(){
-  $('.btn btn-warning').click(function(){
-
-    alert($(this).text());
-  });
-
-});
-
-</script>
