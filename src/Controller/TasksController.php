@@ -92,18 +92,6 @@ class TasksController extends AppController
         return $this->redirect(['action' => 'index']);
     }
 
-    public function receive($TaskId = null){
-        $Completed=$this->request->getData('Completed');
-        $task = $this->Tasks->get($TaskId);
-        $task->Completed=$Completed;
-        $this->Flash->success(__('Die Aufgabe wurde gelöscht.'));
-        
-    }
 
-    public function receive1(){
-        $Completed=$this->request->getData('Completed');
-        exit($Completed);
-        
-    }
 
 }

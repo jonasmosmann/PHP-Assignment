@@ -8,15 +8,16 @@
     <tr>
       <th scope="col">Beschreibung</th>
       <th scope="col">Besitzer</th>
+      <th scope="col">Erstelldatum</th>
       
     </tr>
   </thead>
   <tbody>
  
     <tr>
-        <td width="50%"><?= $task->Description ?></td>
-        <td width="36%"><?=  $task->Owner ?></td>
-        <td >
+        <td width="40%"><?= $task->Description ?></td>
+        <td width="20%"><?=  $task->Owner ?></td>
+        <td width="20%"><?= ($task->EntryTime->format('d.m.Y ')) ?></td>
         <td width="10%">
                 <?=$this->Html->image("edit.png", ["alt" => "edit",'url' => ['action' => 'edit', $task->TaskId],'style' =>'width:30%; height:auto;'])?>
               

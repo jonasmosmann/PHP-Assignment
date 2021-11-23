@@ -22,11 +22,11 @@
     
       <?php foreach ($tasks as $task){ ?>
             <tr>
-            <td><button type="button" class="btn btn-warning" id="<?php $task->TaskId ?>"> hallo</button></td>
+            <td><input type="checkbox"  name="Completed" value=""></td>
 
 
                 <th scope="row"><?= $this->Html->link($task->Title, ['action' => 'view', $task->TaskId], ['style' => 'text-decoration:none;']) ?></th>
-                <td><?= $task->EntryTime->format(DATE_RFC850) ?></td>
+                <td><?= $task->EntryTime->format('d.m.Y ') ?></td>
                 <td><?=  $task->Owner ?></td>
             
                 <td width="10%">
@@ -39,34 +39,16 @@
 
         </td>
             </tr>
-            <script>
-  $(function (){
-    $('#<?php $task->TaskId ?>').click(function(){
-        $.ajax({
-          method:"POST",
-          url:"<?= $this->Url->build(['controller'=>'Tasks', 'action'=>'receive1'])?>",
-          data:{
-            Completed:1
-          }
-        })
-
-
-    });
-
-
-  })
-
-
-</script>
+   
             <?php } ?>
 
   </tbody>
 </table>
 
-<div class="container" style="margin: 50px 0;">
+<div class="container" style="margin: 70px 0;">
   <div class="row">
   <?php if($number==0){ ?>
-    <div class="col-md-4 offset-md-4" style="background-color:  #f4bd61;"><p style="text-align: center; margin: 10px 0;"> Du hast keine Aufgaben, gönn dir eine Pause!</p></div>
+    <div class="col-md-4 offset-md-4" style="border-top: 2px solid black;"><p style="text-align: center; margin: 10px 0;"> Du hast keine Aufgaben, gönn dir eine Pause!</p></div>
     <?php }else {?>
       <div class="col-md-4 offset-md-4" style="border-top: 2px solid black;"><p style="text-align: center; margin: 10px 0;"> Es gibt noch <?= $number ?> Aufgaben zu erledigen!</p></div>
       <?php } ?>

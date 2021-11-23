@@ -35,8 +35,8 @@
             <td><?= $this->Number->format($user->id) ?></td>
                     <td><?= ($user->name) ?></td>
                     <td><?= ($user->email) ?></td>
-                    <td><?= ($user->created) ?></td>
-                    <td><?= ($user->modified) ?></td>
+                    <td><?= ($user->created->format('d.m.Y ')) ?></td>
+                    <td><?= ($user->modified->format('d.m.Y ')) ?></td>
                    
                         <td width="10%">
                         <?=$this->Html->image("user.png", ["alt" => "user",'url' => ['action' => 'view', $user->id],'style' =>'width:30%; height:auto;'])?>
