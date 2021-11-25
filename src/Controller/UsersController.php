@@ -3,53 +3,29 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-/**
- * Users Controller
- *
- * @property \App\Model\Table\UsersTable $Users
- * @method \App\Model\Entity\User[]|\Cake\Datasource\ResultSetInterface paginate($object = null, array $settings = [])
- */
+
 class UsersController extends AppController
 {
-    /**
-     * Index method
-     *
-     * @return \Cake\Http\Response|null|void Renders view
-     */
+    
     public function index()
     {
-
         $users = $this->Users->find('all', [
             'conditions' => ['Users.id' =>$this->Auth->user('id') ]
         ]);
 
         $this->set(compact('users'));
-
-        
         $this->set('users', $users);
     }
 
-    /**
-     * View method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null|void Renders view
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
     public function view($id = null)
     {
         $user = $this->Users->get($id, [
             'contain' => [],
         ]);
-
         $this->set(compact('user'));
     }
 
-    /**
-     * Add method
-     *
-     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
-     */
+   
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
@@ -65,13 +41,7 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    /**
-     * Edit method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+    
     public function edit($id = null)
     {
         $user = $this->Users->get($id, [
@@ -89,57 +59,49 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
-    /**
-     * Delete method
-     *
-     * @param string|null $id User id.
-     * @return \Cake\Http\Response|null|void Redirects to index.
-     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
-     */
+   
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
         $user = $this->Users->get($id);
         if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
+            $this->Flash->success(__('Der Benutzer wurde gelöscht.'));
         } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            $this->Flash->error(__('Der Benutzer konnte nicht gelöscht werden, versuche es nochmal.'));
         }
 
         return $this->redirect(['action' => 'index']);
     }
+
     public function login() {
         if ($this->request->is('post')) {
         $user = $this->Auth->identify();
         if ($user) {
         $this->Auth->setUser($user);
-       
         return $this->redirect(['controller' => 'tasks']);
         }
-        //Bad login
-        $this->Flash->error('Incorrect login');
+        $this->Flash->error('Dein Benutzername oder dein Passwort ist falsch, versuche es nochmal.');
         }
        }
+
        public function logout() {
-        $this->Flash->success('You are loggoed out');
+        $this->Flash->success('Du wurdest erfolgreich ausgeloggt!');
         return $this->redirect($this->Auth->logout());
        }
        public function beforeFilter(\Cake\Event\EventInterface $event) {
         $this->Auth->allow('register');
        }
+
        public function register() {
         if ($this->request->getData()) {
         $user = $this->Users->newEntity($this->request->getData());
         if ($this->Users->save($user)) {
-        //$this->Auth->setUser($user->toArray());
-        $this->Flash->success(__('You are registered. You can login now.'));
+        $this->Flash->success(__('Du hast dich erfolgreich registriert, logge dich gleich ein!'));
         return $this->redirect([
-        //'controller' => 'Users',
-        'action' => 'login'
-        ]);
+        'action' => 'login' ]);
         }
         else {
-        $this->Flash->error(__('You are not registered.'));
+        $this->Flash->error(__('Du bist nicht registriert.'));
         }
         }
        }

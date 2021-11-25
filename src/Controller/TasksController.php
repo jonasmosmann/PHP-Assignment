@@ -10,23 +10,19 @@ class TasksController extends AppController
         $this->loadComponent('Paginator');
     }
 
-
-
     public function index()
     {
         $tasks = $this->Paginator->paginate($this->Tasks->find());
-
         $this->set('tasks', $tasks);
-        
         $query = $this->Tasks->find('all', [
             'conditions' => ['Tasks.Completed' => '0']
         ]);
         $number = $query->count();
         $this->set('number', $number);
     }
+
     public function add(){
         $task = $this->Tasks->newEmptyEntity();
-
         if ($this->request->is('post')){
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             $task->Owner=$this->Auth->user('name');
@@ -36,7 +32,6 @@ class TasksController extends AppController
                 return $this->redirect(['action'=>'index']);
             }
             $this->Flash->error("Deine Aufgabe konnte nicht gespeichert werden!");
-
         }
         $this->set('task', $task);
     }
@@ -50,7 +45,6 @@ class TasksController extends AppController
 
     public function edit($TaskId = null)
     {
-
         $task = $this->Tasks->get($TaskId, [
             'contain' => []
         ]);
@@ -59,7 +53,6 @@ class TasksController extends AppController
             return $this->redirect(['action' => 'index']);
        }
        
-
         if ($this->request->is(['patch', 'post', 'put'])) {
             $task = $this->Tasks->patchEntity($task, $this->request->getData());
             if ($this->Tasks->save($task)) {
@@ -74,7 +67,6 @@ class TasksController extends AppController
        
     public function delete($TaskId = null)
     {
-
         $task = $this->Tasks->get($TaskId);
 
         if( $task->user_id!==$this->Auth->user('id')) {
@@ -91,7 +83,4 @@ class TasksController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
-
-
 }
